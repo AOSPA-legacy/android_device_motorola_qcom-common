@@ -63,13 +63,7 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    curl \
-    libbson \
-    libcurl \
     tcpdump
-
-# Charger
-PRODUCT_PACKAGES += charger charger_res_images
 
 # QRNGD
 PRODUCT_PACKAGES += qrngd
@@ -245,9 +239,5 @@ PRODUCT_GMS_CLIENTID_BASE ?= android-motorola
 # QC time services
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
-
-# Enable KSM by default
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ksm.default=1
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
