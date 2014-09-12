@@ -19,7 +19,8 @@ YEAR=`date +"%Y"`
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -34,7 +35,8 @@ DISM=`egrep -c '(^#|^$)' device-proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
 for FILE in `egrep -v '(^#|^$)' device-proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
-  if [ $COUNT = "0" ] && [ -f ../$COMMON_DEVICE/proprietary-files.txt ]; then
+  if [ $COUNT = "0" ] && [ -f ../$COMMON_DEVICE/proprietary-files.txt ]; 
+then
     LINEEND=" \\"
   elif [ $COUNT = "0" ]; then
   LINEEND=""
@@ -47,7 +49,8 @@ for FILE in `egrep -v '(^#|^$)' device-proprietary-files.txt`; do
     if [ -n "$DEST" ]; then
         FILE=$DEST
     fi
-    echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
+    echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> 
+$MAKEFILE
   fi
 done
 
@@ -56,7 +59,8 @@ LINEEND=" \\"
 COUNT=`wc -l ../$COMMON_DEVICE/proprietary-files.txt | awk {'print $1'}`
 DISM=`egrep -c '(^#|^$)' ../$COMMON_DEVICE/proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
-for FILE in `egrep -v '(^#|^$)' ../$COMMON_DEVICE/proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' 
+../$COMMON_DEVICE/proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
@@ -69,7 +73,8 @@ for FILE in `egrep -v '(^#|^$)' ../$COMMON_DEVICE/proprietary-files.txt`; do
     if [ -n "$DEST" ]; then
         FILE=$DEST
     fi
-    echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
+    echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> 
+$MAKEFILE
   fi
 done
 fi
@@ -85,7 +90,8 @@ fi
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -98,7 +104,9 @@ DEVICE_PACKAGE_OVERLAYS += vendor/$VENDOR/$DEVICE/overlay
 EOF
 
 if [ $COMMON_DEVICE != "" ]; then
-  echo "\$(call inherit-product, vendor/$VENDOR/$COMMON_DEVICE/$COMMON_DEVICE-vendor.mk)" >> $VENDOR_MAKEFILE
+  echo "\$(call inherit-product, 
+vendor/$VENDOR/$COMMON_DEVICE/$COMMON_DEVICE-vendor.mk)" >> 
+$VENDOR_MAKEFILE
   echo "" >> $VENDOR_MAKEFILE
 else
   echo "" >> $VENDOR_MAKEFILE
@@ -115,7 +123,8 @@ fi
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -134,7 +143,8 @@ if [ -d ../../../$OUTDIR/proprietary/app ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -144,7 +154,8 @@ LOCAL_PATH := \$(call my-dir)
 
 EOF
 
-echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> ../../../$OUTDIR/proprietary/app/Android.mk
+echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> 
+../../../$OUTDIR/proprietary/app/Android.mk
 echo ""  >> ../../../$OUTDIR/proprietary/app/Android.mk
 echo "# Prebuilt APKs" >> $VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $VENDOR_MAKEFILE
@@ -188,7 +199,8 @@ if [ -d ../../../$OUTDIR/proprietary/framework ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -198,7 +210,8 @@ LOCAL_PATH := \$(call my-dir)
 
 EOF
 
-echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> ../../../$OUTDIR/proprietary/framework/Android.mk
+echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> 
+../../../$OUTDIR/proprietary/framework/Android.mk
 echo ""  >> ../../../$OUTDIR/proprietary/framework/Android.mk
 echo "# Prebuilt jars" >> $VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $VENDOR_MAKEFILE
@@ -242,7 +255,8 @@ if [ -d ../../../$OUTDIR/proprietary/priv-app ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -252,7 +266,8 @@ LOCAL_PATH := \$(call my-dir)
 
 EOF
 
-echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> ../../../$OUTDIR/proprietary/priv-app/Android.mk
+echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> 
+../../../$OUTDIR/proprietary/priv-app/Android.mk
 echo ""  >> ../../../$OUTDIR/proprietary/priv-app/Android.mk
 echo "# Prebuilt privileged APKs" >> $VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $VENDOR_MAKEFILE
@@ -285,7 +300,8 @@ echo "" >> $VENDOR_MAKEFILE
 echo "endif" >> ../../../$OUTDIR/proprietary/priv-app/Android.mk
 fi
 
-LIBS=`cat device-proprietary-files.txt | grep '\-lib' | cut -d'-' -f2 | head -1`
+LIBS=`cat device-proprietary-files.txt | grep '\-lib' | cut -d'-' -f2 | 
+head -1`
 
 if [ -f ../../../$OUTDIR/proprietary/$LIBS ]; then
 (cat << EOF) > ../../../$OUTDIR/proprietary/lib/Android.mk
@@ -299,7 +315,8 @@ if [ -f ../../../$OUTDIR/proprietary/$LIBS ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -309,14 +326,16 @@ LOCAL_PATH := \$(call my-dir)
 
 EOF
 
-echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> ../../../$OUTDIR/proprietary/lib/Android.mk
+echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> 
+../../../$OUTDIR/proprietary/lib/Android.mk
 echo ""  >> ../../../$OUTDIR/proprietary/lib/Android.mk
 echo "# Prebuilt libs needed for compilation" >> $VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $VENDOR_MAKEFILE
 
 LINEEND=" \\"
 COUNT=`cat device-proprietary-files.txt | grep '\-lib' | wc -l`
-for LIB in `cat device-proprietary-files.txt | grep '\-lib' | cut -d'/' -f2`;do
+for LIB in `cat device-proprietary-files.txt | grep '\-lib' | cut -d'/' 
+-f2`;do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
@@ -342,7 +361,8 @@ echo "" >> $VENDOR_MAKEFILE
 echo "endif" >> ../../../$OUTDIR/proprietary/lib/Android.mk
 fi
 
-VENDORLIBS=`cat device-proprietary-files.txt | grep '\-vendor\/lib' | cut -d'-' -f2 | head -1`
+VENDORLIBS=`cat device-proprietary-files.txt | grep '\-vendor\/lib' | 
+cut -d'-' -f2 | head -1`
 
 if [ -f ../../../$OUTDIR/proprietary/$VENDORLIBS ]; then
 (cat << EOF) > ../../../$OUTDIR/proprietary/vendor/lib/Android.mk
@@ -356,7 +376,8 @@ if [ -f ../../../$OUTDIR/proprietary/$VENDORLIBS ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
@@ -366,14 +387,16 @@ LOCAL_PATH := \$(call my-dir)
 
 EOF
 
-echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> ../../../$OUTDIR/proprietary/vendor/lib/Android.mk
+echo "ifeq (\$(TARGET_DEVICE),$DEVICE)" >> 
+../../../$OUTDIR/proprietary/vendor/lib/Android.mk
 echo ""  >> ../../../$OUTDIR/proprietary/vendor/lib/Android.mk
 echo "# Prebuilt vendor/libs needed for compilation" >> $VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $VENDOR_MAKEFILE
 
 LINEEND=" \\"
 COUNT=`cat device-proprietary-files.txt | grep '\-vendor\/lib' | wc -l`
-for VENDORLIB in `cat device-proprietary-files.txt | grep '\-vendor\/lib' | cut -d'/' -f3`;do
+for VENDORLIB in `cat device-proprietary-files.txt | grep 
+'\-vendor\/lib' | cut -d'/' -f3`;do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
@@ -413,20 +436,24 @@ fi
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 
 PRODUCT_COPY_FILES += \\
 EOF
 
 LINEEND=" \\"
-COUNT=`wc -l ../$COMMON_DEVICE/common-proprietary-files.txt | awk {'print $1'}`
+COUNT=`wc -l ../$COMMON_DEVICE/common-proprietary-files.txt | awk 
+{'print $1'}`
 DISM=`egrep -c '(^#|^$)' ../$COMMON_DEVICE/common-proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
-for FILE in `egrep -v '(^#|^$)' ../$COMMON_DEVICE/common-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' 
+../$COMMON_DEVICE/common-proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
@@ -439,9 +466,62 @@ for FILE in `egrep -v '(^#|^$)' ../$COMMON_DEVICE/common-proprietary-files.txt`;
     if [ -n "$DEST" ]; then
         FILE=$DEST
     fi
-    echo "    $COMMON_OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $COMMON_MAKEFILE
+    echo "    $COMMON_OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> 
+$COMMON_MAKEFILE
   fi
 done
+
+(cat << EOF) > ../../../$COMMON_OUTDIR/Android.mk
+# Copyright (C) $YEAR The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+
+LOCAL_PATH := \$(call my-dir)
+
+ifneq (\$(filter moto_msm8960 moto_msm8960_jbbl,\$(TARGET_DEVICE)),)
+include \$(call all-makefiles-under,\$(LOCAL_PATH))
+endif
+
+EOF
+
+(cat << EOF) > ../../../$COMMON_OUTDIR/proprietary/Android.mk
+# Copyright (C) $YEAR The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+
+LOCAL_PATH := \$(call my-dir)
+
+include \$(call all-makefiles-under,\$(LOCAL_PATH))
+
+EOF
 
 (cat << EOF) > $COMMON_VENDOR_MAKEFILE
 # Copyright (C) $YEAR The CyanogenMod Project
@@ -454,15 +534,18 @@ done
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 
 # Pick up overlay for features that depend on non-open-source files
 
-\$(call inherit-product, vendor/$VENDOR/$COMMON_DEVICE/$COMMON_DEVICE-vendor-blobs.mk)
+\$(call inherit-product, 
+vendor/$VENDOR/$COMMON_DEVICE/$COMMON_DEVICE-vendor-blobs.mk)
 
 EOF
 
@@ -477,11 +560,13 @@ EOF
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 EOF
 
 if [ -d ../../../$COMMON_OUTDIR/proprietary/app ]; then
@@ -496,20 +581,24 @@ if [ -d ../../../$COMMON_OUTDIR/proprietary/app ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 
 LOCAL_PATH := \$(call my-dir)
 
 EOF
 
 if [ $BOARD_VENDOR != "" ]; then
-  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> ../../../$COMMON_OUTDIR/proprietary/app/Android.mk
+  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> 
+../../../$COMMON_OUTDIR/proprietary/app/Android.mk
 fi
-echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> ../../../$COMMON_OUTDIR/proprietary/app/Android.mk
+echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> 
+../../../$COMMON_OUTDIR/proprietary/app/Android.mk
 echo ""  >> ../../../$COMMON_OUTDIR/proprietary/app/Android.mk
 echo "# Prebuilt APKs" >> $COMMON_VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $COMMON_VENDOR_MAKEFILE
@@ -556,26 +645,31 @@ if [ -d ../../../$COMMON_OUTDIR/proprietary/framework ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 
 LOCAL_PATH := \$(call my-dir)
 
 EOF
 
 if [ $BOARD_VENDOR != "" ]; then
-  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> ../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
+  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> 
+../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
 fi
-echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> ../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
+echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> 
+../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
 echo ""  >> ../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
 echo "# Prebuilt jars" >> $COMMON_VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $COMMON_VENDOR_MAKEFILE
 
 LINEEND=" \\"
-COUNT=`ls -1 ../../../$COMMON_OUTDIR/proprietary/framework/*.jar | wc -l`
+COUNT=`ls -1 ../../../$COMMON_OUTDIR/proprietary/framework/*.jar | wc 
+-l`
 for JAR in `ls ../../../$COMMON_OUTDIR/proprietary/framework/*jar`; do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
@@ -583,7 +677,8 @@ for JAR in `ls ../../../$COMMON_OUTDIR/proprietary/framework/*jar`; do
   fi
     jarname=`basename $JAR`
     jarmodulename=`echo $jarname|sed -e 's/\.jar$//gi'`
-    (cat << EOF) >> ../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
+    (cat << EOF) >> 
+../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
 include \$(CLEAR_VARS)
 LOCAL_MODULE := $jarmodulename
 LOCAL_MODULE_TAGS := optional
@@ -600,7 +695,8 @@ done
 echo "" >> $COMMON_VENDOR_MAKEFILE
 echo "endif" >> ../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
 if [ $BOARD_VENDOR != "" ]; then
-  echo "endif" >> ../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
+  echo "endif" >> 
+../../../$COMMON_OUTDIR/proprietary/framework/Android.mk
 fi
 fi
 
@@ -616,34 +712,40 @@ if [ -d ../../../$COMMON_OUTDIR/proprietary/priv-app ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 
 LOCAL_PATH := \$(call my-dir)
 
 EOF
 
 if [ $BOARD_VENDOR != "" ]; then
-  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> ../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
+  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> 
+../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
 fi
-echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> ../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
+echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> 
+../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
 echo ""  >> ../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
 echo "# Prebuilt privileged APKs" >> $COMMON_VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $COMMON_VENDOR_MAKEFILE
 
 LINEEND=" \\"
 COUNT=`ls -1 ../../../$COMMON_OUTDIR/proprietary/priv-app/*.apk | wc -l`
-for PRIVAPK in `ls ../../../$COMMON_OUTDIR/proprietary/priv-app/*apk`; do
+for PRIVAPK in `ls ../../../$COMMON_OUTDIR/proprietary/priv-app/*apk`; 
+do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
   fi
     privapkname=`basename $PRIVAPK`
     privmodulename=`echo $privapkname|sed -e 's/\.apk$//gi'`
-    (cat << EOF) >> ../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
+    (cat << EOF) >> 
+../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
 include \$(CLEAR_VARS)
 LOCAL_MODULE := $privmodulename
 LOCAL_MODULE_TAGS := optional
@@ -661,11 +763,13 @@ done
 echo "" >> $COMMON_VENDOR_MAKEFILE
 echo "endif" >> ../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
 if [ $BOARD_VENDOR != "" ]; then
-  echo "endif" >> ../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
+  echo "endif" >> 
+../../../$COMMON_OUTDIR/proprietary/priv-app/Android.mk
 fi
 fi
 
-LIBS=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-lib' | cut -d'-' -f2 | head -1`
+LIBS=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-lib' 
+| cut -d'-' -f2 | head -1`
 
 if [ -f ../../../$COMMON_OUTDIR/proprietary/$LIBS ]; then
 (cat << EOF) > ../../../$COMMON_OUTDIR/proprietary/lib/Android.mk
@@ -679,27 +783,33 @@ if [ -f ../../../$COMMON_OUTDIR/proprietary/$LIBS ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 
 LOCAL_PATH := \$(call my-dir)
 
 EOF
 
 if [ $BOARD_VENDOR != "" ]; then
-  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> ../../../$COMMON_OUTDIR/proprietary/lib/Android.mk
+  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> 
+../../../$COMMON_OUTDIR/proprietary/lib/Android.mk
 fi
-echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> ../../../$COMMON_OUTDIR/proprietary/lib/Android.mk
+echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> 
+../../../$COMMON_OUTDIR/proprietary/lib/Android.mk
 echo ""  >> ../../../$COMMON_OUTDIR/proprietary/lib/Android.mk
 echo "# Prebuilt libs needed for compilation" >> $COMMON_VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $COMMON_VENDOR_MAKEFILE
 
 LINEEND=" \\"
-COUNT=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-lib' | wc -l`
-for LIB in `cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-lib' | cut -d'/' -f2`;do
+COUNT=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-lib' 
+| wc -l`
+for LIB in `cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep 
+'\-lib' | cut -d'/' -f2`;do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
@@ -728,7 +838,8 @@ if [ $BOARD_VENDOR != "" ]; then
 fi
 fi
 
-VENDORLIBS=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-vendor\/lib' | cut -d'-' -f2 | head -1`
+VENDORLIBS=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep 
+'\-vendor\/lib' | cut -d'-' -f2 | head -1`
 
 if [ -f ../../../$COMMON_OUTDIR/proprietary/$VENDORLIBS ]; then
 (cat << EOF) > ../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
@@ -742,34 +853,42 @@ if [ -f ../../../$COMMON_OUTDIR/proprietary/$VENDORLIBS ]; then
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is generated by device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
+# This file is generated by 
+device/$VENDOR/$COMMON_DEVICE/setup-makefiles.sh
 
 LOCAL_PATH := \$(call my-dir)
 
 EOF
 
 if [ $BOARD_VENDOR != "" ]; then
-  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> ../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
+  echo "ifeq (\$(BOARD_VENDOR),$BOARD_VENDOR)" >> 
+../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
 fi
-echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> ../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
+echo "ifeq (\$(TARGET_BOARD_PLATFORM),$TARGET_BOARD_PLATFORM)" >> 
+../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
 echo ""  >> ../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
-echo "# Prebuilt vendor/libs needed for compilation" >> $COMMON_VENDOR_MAKEFILE
+echo "# Prebuilt vendor/libs needed for compilation" >> 
+$COMMON_VENDOR_MAKEFILE
 echo "PRODUCT_PACKAGES += \\" >> $COMMON_VENDOR_MAKEFILE
 
 LINEEND=" \\"
-COUNT=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-vendor\/lib' | wc -l`
-for VENDORLIB in `cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep '\-vendor\/lib' | cut -d'/' -f3`;do
+COUNT=`cat ../$COMMON_DEVICE/common-proprietary-files.txt | grep 
+'\-vendor\/lib' | wc -l`
+for VENDORLIB in `cat ../$COMMON_DEVICE/common-proprietary-files.txt | 
+grep '\-vendor\/lib' | cut -d'/' -f3`;do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
   fi
     vendorlibname=`basename $VENDORLIB`
     vendorlibmodulename=`echo $vendorlibname|sed -e 's/\.so$//gi'`
-    (cat << EOF) >> ../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
+    (cat << EOF) >> 
+../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
 include \$(CLEAR_VARS)
 LOCAL_MODULE := $vendorlibmodulename
 LOCAL_MODULE_OWNER := $VENDOR
@@ -784,8 +903,10 @@ EOF
 
 echo "    $vendorlibmodulename$LINEEND" >> $COMMON_VENDOR_MAKEFILE
 done
-echo "endif" >> ../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
+echo "endif" >> 
+../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
 if [ $BOARD_VENDOR != "" ]; then
-  echo "endif" >> ../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
+  echo "endif" >> 
+../../../$COMMON_OUTDIR/proprietary/vendor/lib/Android.mk
 fi
 fi
